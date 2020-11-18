@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  rails:
+    build: ./rails-sample
+    ports:
+      - 3000:3000
+    volumes:
+      - ./rails-sample:/app
+      - /app/node_modules
+    stdin_open: true
+    tty: true
+    command: sh -c "yarn && bundle exec rails server -b 0.0.0.0 -p 3000"
+    depends_on:
+      - mysql
+  nuxt:
+    build: ./nuxt-sample
+    ports:
+      - 8000:8000
+    volumes:
+      - ./nuxt-sample:/app
+      - /app/node_modules
+    command: sh -c "yarn && yarn dev"
+  mysql:
+    image: mysql:8.0.22
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_DATABASE: test-database
+volumes:
+  db-data:
