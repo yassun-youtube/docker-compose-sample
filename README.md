@@ -2,7 +2,7 @@
 
 ## 起動
 ```
-docker-compse up
+docker-compose up
 ```
 
 ### フロントにアクセス
