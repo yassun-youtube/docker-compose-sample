@@ -53,3 +53,8 @@ docker-compose exec rails bundle exec rails db:seed
 - package.json
   - @nuxtjs/axios の追加
 ```
+
+
+### Infrastructure model
+
+![Infrastructure model](.infragenie/infrastructure_model.png)
